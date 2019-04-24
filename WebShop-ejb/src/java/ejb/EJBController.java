@@ -32,4 +32,6 @@ public class EJBController {
         
         em.persist(object);
     }
+    
+    
 }

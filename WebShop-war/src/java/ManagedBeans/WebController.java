@@ -7,6 +7,8 @@ package ManagedBeans;
 
 import ejb.EJBController;
 import ejb.Login;
+import ejb.Order;
+import ejb.Watch;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -39,6 +41,15 @@ public class WebController implements Serializable {
         c.persist(login);
     }
 
+    public void fillDB(){
+        Login login = new Login("Erik", "password", 1, 0);
+        c.persist(login);
+        Login login2 = new Login("Anna", "password321", 0, 0);
+        c.persist(login2);
+        Login login3 = new Login("Adam", "password123", 0, 1);
+        c.persist(login3);
+    }
+    
     public String getName() {
         return name;
     }

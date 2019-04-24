@@ -27,7 +27,7 @@ public class Login implements Serializable {
     private int premium;
     private int administrator;
 
-    public Login(Long id, String name, String password, int premium, int administrator) {
+    public Login(String name, String password, int premium, int administrator) {
         this.id = id;
         this.name = name;
         this.password = password;
