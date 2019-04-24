@@ -24,7 +24,12 @@ public class EJBController {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
+//    public void persist(Object object) {
+//        em.persist(object);
+//    }
+
     public void persist(Object object) {
+        
         em.persist(object);
     }
 }
