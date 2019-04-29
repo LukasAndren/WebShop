@@ -9,11 +9,27 @@
     <h:body>
         <f:view>
             <h:form>
-                <h:inputText value="#{webController.name}"></h:inputText>
+                <!--<h:inputText value="#{webController.name}"></h:inputText>
                 <br/>
                 <h:inputText value="#{webController.password}"></h:inputText>
-                <br/>
+                <br/>-->
                 <h:commandButton action="#{webController.addUser()}"></h:commandButton>
+                <h:commandButton value="start1" action="#{webController.webStart1()}"></h:commandButton>
+                <h:commandButton value="start" action="#{webController.webStart()}"></h:commandButton>
+                <h:form>
+                    <h:dataTable value="#{webController.cart}" var="watch" bgcolor="cyan" border="8" cellpadding="10">
+                        <f:facet name="header">Authors</f:facet>
+                        <h:column>
+                            <h:outputText id="o1" value="#{watch.brand} "></h:outputText>                            
+                        </h:column>
+                        <h:column>
+                            <h:outputText id="o2" value="#{watch.description}"></h:outputText>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+
+                
+                
             </h:form>
         </f:view>
     </h:body>

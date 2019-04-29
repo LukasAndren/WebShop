@@ -22,6 +22,33 @@ public class Watch implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String brand;
+    private String description;
+
+    public Watch(String brand, String description) {
+        this.brand = brand;
+        this.description = description;
+    }
+    
+    public Watch(){
+        
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Long getId() {
         return id;

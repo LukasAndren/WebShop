@@ -7,6 +7,8 @@ package ejb;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDateTime;
+import static javax.persistence.CascadeType.PERSIST;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,38 +20,46 @@ import javax.persistence.OneToOne;
  * @author buster
  */
 @Entity
-public class Order implements Serializable {
+public class Purchase implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
-    private Login Login;
-    @OneToOne
+    @OneToOne(cascade=PERSIST)
+    private Login login;
+    @OneToOne(cascade=PERSIST)
     private Watch watch;
     private int amount;
     private double total;
-    private Date date;
+    private LocalDateTime date;
+
+    public Purchase() {
+    }
     
-    public Order(Long id, Login Login, Watch watch, int amount, double total, Date date) {
-        this.id = id;
-        this.Login = Login;
+    
+    
+    public Purchase(Login login, Watch watch, int amount, double total) {
+        this.login = login;
         this.watch = watch;
         this.amount = amount;
         this.total = total;
-        this.date = date;
+        this.date = LocalDateTime.now();
     }
 
-    public Order() {
+    public Purchase(Login login, Watch watch) {
+        this.login = login;
+        this.watch = watch;
+        
+        date = LocalDateTime.now();
     }
 
     public Login getLogin() {
-        return Login;
+        return login;
     }
 
-    public void setLogin(Login Login) {
-        this.Login = Login;
+    public void setLogin(Login login) {
+        this.login = login;
     }
 
     public Watch getWatch() {
@@ -76,11 +86,11 @@ public class Order implements Serializable {
         this.total = total;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -102,10 +112,10 @@ public class Order implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Order)) {
+        if (!(object instanceof Purchase)) {
             return false;
         }
-        Order other = (Order) object;
+        Purchase other = (Purchase) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
